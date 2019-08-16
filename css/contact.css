@@ -1,0 +1,18 @@
+body {
+	background: url(../img/default/bg5.jpg) fixed;
+    background-size: cover;
+    background-position: center center;
+}
+#nav .contact a {
+	color: #121212;
+}
+#main #cont {
+	float: left;
+	height: 500px;
+	background: #EEE;
+}
+#main #info .welcome{
+	font-weight: 700;
+	font-size: 20px;
+	margin-top: 100px;
+}

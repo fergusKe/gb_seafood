@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/default.css">
+    <title>海山之鮮</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- <div class="slideshow autoPlay">
+            <ul>
+                <li>
+                    <img src="images/P1030038.jpg" title="title" alt="" />
+                </li>
+                <li>
+                    <img src="images/P1030054.jpg" title="title" alt="" />
+                </li>
+                <li>
+                    <img src="images/P1030068.jpg" title="title" alt="" />
+                </li>
+                <li>
+                    <img src="images/P1030075.jpg" title="title" alt="" />
+                </li>
+            </ul>
+        </div> -->
+        <div id="header">
+            <div id="logo">
+                <a href="index.htm">
+                    <img src="img/logo.png">
+                </a>
+            </div>
+        </div>
+        <div id="container">
+            <div id="main">
+                <div id="slider">
+                    <div class="sliderBox">
+                        <a href="index.htm">
+                            <div class="front bg0">
+                                <div class="frontImg">
+                                    <div class="text">
+                                        <p>海山之鮮</p>
+                                        <p>Index</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="back">
+                                <div class="backImg">
+                                    <div class="text">
+                                        <p>海山之鮮</p>
+                                        <p>Index</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="sliderBox">
+                        <a href="about.htm">
+                            <div class="front bg1">
+                                <div class="frontImg">
+                                    <div class="text">
+                                        <p>鮮味哲學</p>
+                                        <p>About</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="back">
+                                <div class="backImg">
+                                    <div class="text">
+                                        <p>鮮味哲學</p>
+                                        <p>About</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="sliderBox">
+                        <a href="menu.htm">
+                            <div class="front bg2">
+                                <div class="frontImg">
+                                    <div class="text">
+                                        <p>美食饗宴</p>
+                                        <p>Menu</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="back">
+                                <div class="backImg">
+                                    <div class="text">
+                                        <p>美食饗宴</p>
+                                        <p>Menu</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="sliderBox">
+                        <a href="together.htm">
+                            <div class="front bg3">
+                                <div class="frontImg">
+                                    <div class="text">
+                                        <p>豪華桌菜</p>
+                                        <p>Together</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="back">
+                                <div class="backImg">
+                                    <div class="text">
+                                        <p>豪華桌菜</p>
+                                        <p>Together</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="sliderBox">
+                        <a href="contact.htm">
+                            <div class="front bg4">
+                                <div class="frontImg">
+                                    <div class="text">
+                                        <p>聯絡方式</p>
+                                        <p>Contact</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="back">
+                                <div class="backImg">
+                                    <div class="text">
+                                        <p>聯絡方式</p>
+                                        <p>Contact</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <div id="address">
+                新北市三重區中正北路22‧24號&nbsp;&nbsp;&nbsp;｜&nbsp;&nbsp;&nbsp;訂席專線： 02-2971-3377
+            </div>
+        </div>
+    </div>
+</body>
+<script src="script/jquery.1.9.0.min.js"></script>
+<script>
+$(function() {
+
+    // 預設圖片淡出淡入的動畫時間
+    var _fadeSpeed = 600;
+
+    // 把每一個 .slideshow 取出來做處理
+    $('.slideshow').each(function() {
+        // 先取得相關的 ul , li
+        // 並產生控制器
+        var $this = $(this),
+            $ul = $this.find('ul'),
+            $li = $ul.find('li'),
+            $controller = $('<div class="slideshowController"><a href="#"></a><a href="#" class="play"></a><a href="#" class="next"></a></div>').css('opacity', 0),
+            _len = $li.length,
+            _index = 0,
+            timer, _speed = 2000;
+
+        // 先把第一張圖片之外的都透明度設成 0
+        $li.eq(_index).css('z-index', 2).siblings().css('opacity', 0);
+
+        // 加入控制器並當滑鼠移入時顯示; 滑鼠移出時隱藏
+        $this.append($controller).hover(function() {
+            $controller.stop().animate({
+                opacity: 1
+            });
+        }, function() {
+            $controller.stop().animate({
+                opacity: 0
+            });
+        });
+
+        // 當點擊到控制器上面的按鈕時
+        $controller.delegate('a', 'click', function() {
+            // 先取得按鈕的 class
+            var $a = $(this),
+                _className = $a.attr('class');
+
+            // 如果按的是 play 或是 pause 鈕
+            if (('play pause').indexOf(_className) > -1) {
+                // 切換目前按鈕圖案
+                // 並依狀態來啟動或停止計時器
+                $a.toggleClass('pause').hasClass('pause') ? timer = setTimeout(autoClickNext, _fadeSpeed + _speed) : clearTimeout(timer);
+                return false;
+            }
+
+            // 停止計時器
+            clearTimeout(timer);
+            // 移除 pause 鈕
+            $a.siblings('.pause').removeClass('pause');
+            // 依按鈕功能來決定上下張圖片索引
+            _index = ('next' == _className ? _index + 1 : _index - 1 + _len) % _len;
+            // 切換圖片
+            show();
+
+            return false;
+        });
+
+        // 自動播放下一張
+        function autoClickNext() {
+            _index = (_index + 1) % _len;
+            show();
+            timer = setTimeout(autoClickNext, _fadeSpeed + _speed);
+        }
+
+        // 淡入淡出圖片
+        function show() {
+            $li.eq(_index).animate({
+                opacity: 1,
+                zIndex: 2
+            }, _fadeSpeed).siblings(':visible').animate({
+                opacity: 0,
+                zIndex: 1
+            }, _fadeSpeed);
+        }
+
+        // 如果有設定預設自動播放的話
+        if ($this.hasClass('autoPlay')) {
+            $controller.find('.play').click();
+        }
+    });
+
+    // $('body').css({
+    //     'background': 'url(img/default/light.jpg)',
+    //     'background-size': 'cover'
+    // })
+    $('body')
+        .animate({
+            // opacity: 1
+        }, 1000, function() {
+            // $(this)
+            //     .css({
+            //         'background': 'url(img/default/light.jpg)',
+            //         'background-size': 'cover',
+            //         'transition': '1s'
+            //     })
+        });
+
+
+    // var mybg2 = setTimeout(function() {
+    //     bg1();
+    // }, 5000);
+
+    // function bg1() {
+    //     $('body')
+    //     .animate({
+    //         // opacity: 1
+    //     }, 0, function() {
+    //         $(this).css({
+    //             'background': 'url(img/default/light.jpg)',
+    //             'background-size': 'cover',
+    //             'transition': '3s'
+    //         });
+    //     });
+
+    //     var mybg2 = setTimeout(function() {
+    //         clearTimeout(mybg1);
+    //         bg2();
+    //     }, 5000);
+
+    // }
+
+    var index, number, box_W, position = 0,
+        angle = 0,
+        backImgFadeIn, outside = 0;
+
+
+
+    $('.sliderBox').stop(true).hover(function() {
+
+        index = $(this).index();
+        number = $('.sliderBox').length;
+
+        // 清除原來的圖案
+        for (i = 0; i < number; i++) {
+            $('.sliderBox .backImg').removeClass('bg' + i);
+        }
+        // 加上新的圖案
+        $('.sliderBox .backImg').addClass('bg' + index);
+
+        $('.sliderBox').each(function() {
+            box_W = $('.sliderBox').width();
+
+            $('.backImg', $(this)).css({
+                backgroundPositionX: -position,
+            })
+
+            position += box_W;
+
+        });
+
+        // hover時選單淡入淡出
+        // if (backImgFadeIn) {
+        //     clearTimeout(backImgFadeIn);
+        //     backImgFadeIn = 0;
+        // }
+
+        // backImgFadeIn = setTimeout(function() {
+        //     $('.backImg').stop(true).css({
+        //         opacity: '.2'
+        //     }).animate({
+        //         opacity: '1'
+        //     }, 500)
+        // }, 0);
+        // console.log(backImgFadeIn);
+
+        // if (angle != 180) {
+        angle += 180;
+        outside += 1;
+        // }
+        $(".sliderBox").stop(true).animate({
+            //內容
+            // display: 'block'
+        }, 0, function() {
+            $('.sliderBox .front').css({
+                transform: 'rotateY(' + (-angle) + 'deg)'
+            })
+            $('.sliderBox .back').css({
+                transform: 'rotateY(' + (180 - angle) + 'deg)'
+            })
+        });
+
+        // 隱藏文字內容
+        // 加上.active標示位置
+        $('#slider .sliderBox.active').removeClass('active');
+        $(this).addClass('active');
+
+        // $('#slider .sliderBox.active .text').animate({
+        //     opacity: 1
+        // }, 200, function() {
+        //     $('#slider .sliderBox:not(.active) .text').css(
+        //         'opacity', 0
+        //     )
+        // })
+        // $('#slider .sliderBox.active .text').css(
+        //     'opacity', 1
+        // )
+
+
+        // $('#slider .sliderBox.active .text').animate({
+        //     opacity: 1
+        // }, 200)
+        // $('#slider .sliderBox:not(.active) .text').css(
+        //     'opacity', 0
+        // )
+
+
+        if ((angle / 180) % 2 == 1) { //翻到反面
+            $('#slider .sliderBox .front .text').css(
+                'opacity', 0
+            )
+            $('#slider .sliderBox .back .text').css(
+                'opacity', 1
+            )
+            $('#slider .sliderBox:not(.active) .text').css(
+                    'opacity', 0
+                )
+                // 清除原來的圖案
+            for (i = 0; i < number; i++) {
+                $('.sliderBox .backImg').removeClass('bg' + i);
+            }
+            // 加上新的圖案
+            $('.sliderBox .backImg').addClass('bg' + index);
+
+            $('.sliderBox').each(function() {
+                box_W = $('.sliderBox').width();
+
+                $('.backImg', $(this)).css({
+                    backgroundPositionX: -position,
+                })
+
+                position += box_W;
+
+            });
+            console.log('反面');
+        } else { //翻到正面
+            $('#slider .sliderBox .front .text').css(
+                'opacity', 1
+            )
+            $('#slider .sliderBox .back .text').css(
+                'opacity', 0
+            )
+            $('#slider .sliderBox:not(.active) .text').css(
+                    'opacity', 0
+                )
+                // 清除原來的圖案
+            for (i = 0; i < number; i++) {
+                $('.sliderBox .frontImg').removeClass('bg' + i);
+            }
+            // 加上新的圖案
+            $('.sliderBox .frontImg').addClass('bg' + index);
+
+            $('.sliderBox').each(function() {
+                box_W = $('.sliderBox').width();
+
+                $('.frontImg', $(this)).css({
+                    backgroundPositionX: -position,
+                })
+
+                position += box_W;
+
+            });
+            console.log('正面');
+        }
+        // console.log((angle / 180 + outside) % 2);
+
+    }, function() { // 滑鼠離開物件時效果
+
+    })
+
+    $('#slider').hover(function() {
+
+    }, function() { // 滑鼠離開物件時效果
+        angle += 180;
+        // console.log('angle=' + angle);
+        $(".sliderBox").stop(true).animate({
+            //內容
+            // display: 'block'
+        }, 0, function() {
+            $('.sliderBox .front').css({
+                transform: 'rotateY(' + (-angle) + 'deg)'
+            })
+            $('.sliderBox .back').css({
+                transform: 'rotateY(' + (180 - angle) + 'deg)'
+            })
+        })
+
+
+
+        if ((angle / 180) % 2 == 1) { //翻到反面
+            $('#slider .sliderBox .front .text').css(
+                    'opacity', 0
+                )
+                // 清除原來的圖案
+            for (i = 0; i < number; i++) {
+                $('.sliderBox .backImg').removeClass('bg' + i);
+                // 加上新的圖案
+                $('.sliderBox .backImg').eq(i).addClass('bg' + i);
+            }
+
+            $('#slider .sliderBox .back .text').css(
+                'opacity', 1
+            )
+
+
+            // $('.sliderBox').each(function() {
+            //     box_W = $('.sliderBox').width();
+
+            //     $('.backImg', $(this)).css({
+            //         backgroundPositionX: -position,
+            //     })
+
+            //     position += box_W;
+
+            // });
+
+        } else { //翻到正面
+            $('#slider .sliderBox .back .text').css(
+                    'opacity', 0
+                )
+                // 清除原來的圖案
+            for (i = 0; i < number; i++) {
+                $('.sliderBox .frontImg').removeClass('bg' + i);
+                // 加上新的圖案
+                $('.sliderBox .frontImg').eq(i).addClass('bg' + i);
+            }
+            $('#slider .sliderBox .front .text').css(
+                'opacity', 1
+            )
+
+
+            // $('.sliderBox').each(function() {
+            //     box_W = $('.sliderBox').width();
+
+            //     $('.frontImg', $(this)).css({
+            //         backgroundPositionX: -position,
+            //     })
+
+            //     position += box_W;
+
+            // });
+        }
+
+        // 顯示文字內容
+        // $('#slider .sliderBox .text').animate({
+        //     opacity: 0
+        // }, 200, function() {
+        //     $('#slider .sliderBox .text').css(
+        //         'opacity', 1
+        //     )
+        // })
+
+    })
+
+})
+</script>
+
+</html>

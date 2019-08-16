@@ -1,0 +1,116 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	background: #EEE;
+}
+#slider {
+	margin: 100px auto;
+	width: 720px;
+}
+#slider:after {
+	content: '';
+	display: table;
+	clear: both;
+	*zoom = 1;
+}
+#slider .sliderBox {
+	position: relative;
+	float: left;
+	cursor: pointer;
+
+}
+#slider .sliderBox~.sliderBox {
+	margin-left: 30px;
+}
+#slider .sliderBox .pic {
+	width: 120px;
+	height: 400px;
+	transform:rotateY(0deg);
+	backface-visibility:hidden;
+	transition:.7s;
+}
+#slider .sliderBox .txt {
+	position:absolute;
+	width: 120px;
+	height: 400px;
+	text-align: center;
+	left:0;
+	top:0;
+	color:#FFF;
+	background-color:#09C;
+	overflow: hidden;
+	transform:rotateY(180deg);
+	backface-visibility:hidden;
+	transition:.75s;
+	text-shadow: 0 6px 5px rgba(0,0,0,.8);
+	/*text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);*/
+}
+#slider .sliderBox .txt .txtCont {
+	position: absolute;
+	margin-top: 160px;
+	width: 120px;
+	/*left: 0;*/
+	right: 0;
+	margin: 160px auto 0;
+	left: -500px;
+	font-family: Microsoft JhengHei;
+	transition: .6s;
+}
+/*#slider .sliderBox:hover .pic {
+	transform:rotateY(-180deg);
+}
+#slider .sliderBox:hover .txt {
+	transform:rotateY(0deg);
+}*/
+
+/*.picHover {
+	transform:rotateY(-180deg);
+}
+.txtHover {
+	transform:rotateY(0deg);
+}*/
+#slider .sliderBox:hover .txt .txtCont {
+	left: 0px;
+	/*-webkit-animation: txtCont .6s;*/
+	/*text-align: center;*/
+}
+/*@-webkit-keyframes txtCont {
+    0% {
+        left: -500px;
+    }
+    100% {
+        left: 0;
+    }
+}*/
+/*#slider .pic {
+	background: url(../images/1.jpg);
+}*/
+
+#slider .bg0 {
+	background: url(../images/1.jpg);
+}
+#slider .bg1 {
+	background: url(../images/2.jpg);
+}
+#slider .bg2 {
+	background: url(../images/3.jpg);
+}
+#slider .bg3 {
+	background: url(../images/4.jpg);
+}
+#slider .bg4 {
+	background: url(../images/5.jpg);
+}

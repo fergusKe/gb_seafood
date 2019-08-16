@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" type="text/css" href="fancyapps-fancyBox/source/jquery.fancybox.css?v=2.1.5" media="screen" />
+    <link rel="stylesheet" type="text/css" href="fancyapps-fancyBox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" />
+    <title>海山之鮮</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <div id="header">
+            <div id="logo">
+                <a href="index.htm">
+                    <img src="img/logo.png">
+                </a>
+            </div>
+            <div id="nav">
+                <ul>
+                    <li class="default"><a href="index.htm">首頁</a>
+                    </li>
+                    <li class="about"><a href="about.htm">鮮味哲學</a>
+                    </li>
+                    <li class="menu"><a href="menu.htm">美食饗宴</a>
+                    </li>
+                    <li class="together"><a href="together.htm">豪華桌菜</a>
+                    </li>
+                    <li class="contact"><a href="contact.htm">聯絡方式</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="container">
+            <div id="main">
+                <div id="cont">
+                    <div class="special photo show">
+                        <ul>
+                            <li>
+                                <a class="fancybox-thumb" rel="fancybox-thumb" href="img/menu/1.jpg" title="菜色名稱">
+                                    <img src="img/menu/1.jpg" alt="" />
+                                </a>
+                            </li>
+                            <li>
+                                <a class="fancybox-thumb" rel="fancybox-thumb" href="img/menu/2.jpg" title="菜色名稱">
+                                    <img src="img/menu/2.jpg" alt="" />
+                                </a>
+                            </li>
+                            <li>
+                                <a class="fancybox-thumb" rel="fancybox-thumb" href="img/menu/3.jpg" title="菜色名稱">
+                                    <img src="img/menu/3.jpg" alt="" />
+                                </a>
+                            </li>
+                            <li>
+                                <a class="fancybox-thumb" rel="fancybox-thumb" href="img/menu/4.jpg" title="菜色名稱">
+                                    <img src="img/menu/4.jpg" alt="" />
+                                </a>
+                            </li>
+                            <li>
+                                <a class="fancybox-thumb" rel="fancybox-thumb" href="img/menu/5.jpg" title="菜色名稱">
+                                    <img src="img/menu/5.jpg" alt="" />
+                                </a>
+                            </li>
+                            <li>
+                                <a class="fancybox-thumb" rel="fancybox-thumb" href="img/menu/6.jpg" title="菜色名稱">
+                                    <img src="img/menu/6.jpg" alt="" />
+                                </a>
+                            </li>
+                            <li>
+                                <a class="fancybox-thumb" rel="fancybox-thumb" href="img/menu/7.jpg" title="菜色名稱">
+                                    <img src="img/menu/7.jpg" alt="" />
+                                </a>
+                            </li>
+                            <li>
+                                <a class="fancybox-thumb" rel="fancybox-thumb" href="img/menu/8.jpg" title="菜色名稱">
+                                    <img src="img/menu/8.jpg" alt="" />
+                                </a>
+                            </li>
+                            <li>
+                                <a class="fancybox-thumb" rel="fancybox-thumb" href="img/menu/9.jpg" title="菜色名稱">
+                                    <img src="img/menu/9.jpg" alt="" />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="priceMenu photo">
+                        <img src="img/menu/menu.jpg">
+                    </div>
+                </div>
+                <div id="info">
+                    <h1>美食饗宴</h1>
+                    <br>
+                    <div class="intro">
+                        <p>我們堅持使用新鮮食材，呈現料理的經典原味，讓顧客都能放新品嘗各種美味，盡情沉浸在美味世界，同時保有健康的美食態度。</p>
+                    </div>
+                    <ul class="category">
+                        <li class="active"><a href="javascript:;">主廚推薦 Special</a></li>
+                        <li><a href="javascript:;">單點菜單 Menu</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <div id="address">
+                新北市三重區中正北路22‧24號&nbsp;&nbsp;&nbsp;｜&nbsp;&nbsp;&nbsp;訂席專線： 02-2971-3377
+            </div>
+        </div>
+    </div>
+</body>
+<script src="script/jquery.1.9.0.min.js"></script>
+<script src="fancyapps-fancyBox/source/jquery.fancybox.js?v=2.1.5"></script>
+<script src="fancyapps-fancyBox/source/helpers/jquery.fancybox-thumbs.js?v=1.0.7"></script>
+<script>
+$(function() {
+    $(".fancybox-thumb").fancybox({
+        openEffect: 'elastic',
+        closeEffect: 'elastic',
+        helpers: {
+            title: {
+                // type: 'outside'
+                type: 'inside'
+            },
+            thumbs: {
+                width: 100,
+                height: 100
+            }
+        }
+    });
+    // $(".fancybox-thumb").fancybox({
+    //     prevEffect  : 'elastic',
+    //     nextEffect  : 'elastic',
+    //     helpers : {
+    //         title   : {
+    //             // type: 'outside'
+    //             type: 'inside'
+    //         },
+    //         thumbs  : {
+    //             width   : 100,
+    //             height  : 100
+    //         }
+    //     }
+    // });
+
+    var index;
+    $('.category li').click(function() {
+        $('.category li.active').removeClass('active');
+        $(this).addClass('active');
+        index = $(this).index();
+        console.log('index=' + index);
+        $('#cont .photo').removeClass('show');
+        $('#cont .photo').eq(index).addClass('show');
+    })
+})
+</script>
+
+</html>
